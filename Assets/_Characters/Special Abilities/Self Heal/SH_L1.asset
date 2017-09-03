@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c88815ceb25f8c4db6cac77fc2b652d, type: 3}
+  m_Name: SH_L1
+  m_EditorClassIdentifier: 
+  energyCost: 50
+  particleObject: {fileID: 1770094935522392, guid: 7098bdbdcde165049872f566c6a00e5f,
+    type: 2}
+  audioClips:
+  - {fileID: 8300000, guid: 00250fb9c7042f449b1ebcb9235ba7d2, type: 3}
+  extraHealth: 50
