@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Weapons
+namespace RPG.Characters
 {
     public class Projectile : MonoBehaviour
     {

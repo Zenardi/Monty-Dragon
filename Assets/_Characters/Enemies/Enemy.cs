@@ -1,5 +1,4 @@
 ﻿using RPG.Core;
-using RPG.Weapons;
 using UnityEngine;
 
 namespace RPG.Characters
