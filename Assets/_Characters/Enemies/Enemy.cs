@@ -20,7 +20,7 @@ namespace RPG.Characters
 
         bool isAttacking = false;
         float currentHealthPoints;
-        AICharacterControl aiCharacterControl = null;
+
         Player player = null;
 
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
@@ -34,41 +34,41 @@ namespace RPG.Characters
         void Start()
         {
             player = GameObject.FindObjectOfType<Player>();
-            aiCharacterControl = GetComponent<AICharacterControl>();
+            
             currentHealthPoints = maxHealthPoints;
         }
 
         void Update()
         {
-            if(player.healthAsPercentage <= Mathf.Epsilon)
-            {
-                StopAllCoroutines();
-                Destroy(this);
-            }
-            //if (aiCharacterControl == null)
-            //    print("aiCharacterControl is null -- " + this.gameObject.name.ToString());
-            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-            if (distanceToPlayer <= attackRadius && aiCharacterControl != null && !isAttacking)
-            {
-                isAttacking = true;
-                float randDelay = Random.Range(firingPeriodInSeconds - firingPeriodVariation, firingPeriodInSeconds + firingPeriodVariation);
-                InvokeRepeating("FireProjectile", 0f, randDelay); //TOOD switch to coroutines
-            }
+            //if(player.healthAsPercentage <= Mathf.Epsilon)
+            //{
+            //    StopAllCoroutines();
+            //    Destroy(this);
+            //}
+            ////if (aiCharacterControl == null)
+            ////    print("aiCharacterControl is null -- " + this.gameObject.name.ToString());
+            //float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+            //if (distanceToPlayer <= attackRadius && aiCharacterControl != null && !isAttacking)
+            //{
+            //    isAttacking = true;
+            //    float randDelay = Random.Range(firingPeriodInSeconds - firingPeriodVariation, firingPeriodInSeconds + firingPeriodVariation);
+            //    InvokeRepeating("FireProjectile", 0f, randDelay); //TOOD switch to coroutines
+            //}
 
-            if (distanceToPlayer > attackRadius && aiCharacterControl != null)
-            {
-                isAttacking = false;
-                CancelInvoke();
-            }
+            //if (distanceToPlayer > attackRadius && aiCharacterControl != null)
+            //{
+            //    isAttacking = false;
+            //    CancelInvoke();
+            //}
 
-            if (distanceToPlayer <= chaseRadius && aiCharacterControl != null)
-            {
-                aiCharacterControl.SetTarget(player.transform);
-            }
-            else if (aiCharacterControl != null)
-            {
-                aiCharacterControl.SetTarget(transform);
-            }
+            //if (distanceToPlayer <= chaseRadius && aiCharacterControl != null)
+            //{
+            //   // aiCharacterControl.SetTarget(player.transform);
+            //}
+            //else if (aiCharacterControl != null)
+            //{
+            //   // aiCharacterControl.SetTarget(transform);
+            //}
         }
 
         void FireProjectile()

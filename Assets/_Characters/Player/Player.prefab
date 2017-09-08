@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 13615390}
   - component: {fileID: 195668797823585146}
   - component: {fileID: 11469404}
-  - component: {fileID: 114601996490369112}
-  - component: {fileID: 114486285834762310}
-  - component: {fileID: 114983200053651410}
   - component: {fileID: 114859354349702732}
+  - component: {fileID: 114831649642272510}
+  - component: {fileID: 114486285834762310}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -32,7 +31,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.226, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4395281008102866}
@@ -2167,7 +2166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f199bc949b26e9d47b6635858635d813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114601996490369112
+--- !u!114 &114831649642272510
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2178,6 +2177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ce4a29bedfefd49af4bff89df6270a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stopDistance: 1
 --- !u!114 &114859354349702732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2191,7 +2191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 200
   baseDamage: 10
-  weaponInUse: {fileID: 11400000, guid: 60ad75c1df7303b40ad7b9f453ab742a, type: 2}
+  weaponConfig: {fileID: 11400000, guid: 60ad75c1df7303b40ad7b9f453ab742a, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: 1acdf0bfdd94f9645afcef3b90b9bfbf,
     type: 2}
   damageSounds:
@@ -2212,18 +2212,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 782fcecfe1676aa45b0774a3167ef4c4, type: 2}
   - {fileID: 11400000, guid: 53b20740a85ea424992f5ec5b6f29321, type: 2}
   - {fileID: 11400000, guid: 940d7108b2bd4ae418abeb2e28ff4459, type: 2}
---- !u!114 &114983200053651410
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5335f0882fe4d478883cc8c58ce906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!137 &137262777851725202
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
