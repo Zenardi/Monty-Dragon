@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 392}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 342}
   m_MaxSize: {x: 12008, y: 8042}
   vertical: 0
-  controlID: 51
+  controlID: 77
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -66,13 +66,13 @@ MonoBehaviour:
     height: 947
   m_MinSize: {x: 277, y: 71}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 18}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 18}
   - {fileID: 13}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 2
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 342}
   m_MaxSize: {x: 8006, y: 8042}
   vertical: 1
-  controlID: 52
+  controlID: 78
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 53
+  controlID: 13
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -286,10 +286,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 1527
-    y: 102
-    width: 385
-    height: 908
+    x: 1532
+    y: 92
+    width: 388
+    height: 926
   m_InitialOpenURL: file:///C:/Users/duzen/AppData/Roaming/Unity/Packages/node_modules/unityeditor-collab-history/dist/index.html
   m_GlobalObjectTypeName: 
   m_RegisteredViewURLs:
@@ -317,8 +317,8 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 1532
-    y: 92
+    x: -30468
+    y: -31951
     width: 388
     height: 926
   m_InitialOpenURL: https://public-cdn.cloud.unity3d.com/editor/production/cloud/hub
@@ -558,19 +558,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/_Characters/Player
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/_Characters/Player
+  - Assets
   m_LastFoldersGridSize: 96
   m_LastProjectPath: D:\GitHub\Games\Unity\Monty-Dragon
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 23}
-    m_SelectedIDs: 204a0000
-    m_LastClickedID: 18976
-    m_ExpandedIDs: 000000009225000098360000b4360000ee370000f03a00001e3f00006a4800005e5b0000605b0000625b0000645b0000665b0000685b00006a5b00006c5b00006e5b0000705b0000725b0000745b0000765b0000785b00007a5b00007c5b00007e5b0000805b0000825b0000845b0000865b0000885b00008a5b00008c5b00008e5b0000905b0000925b0000945b0000965b0000985b00009a5b00009c5b00009e5b0000a05b0000a25b0000a45b0000ffffff7f
+    scrollPos: {x: 0, y: 31}
+    m_SelectedIDs: 90250000
+    m_LastClickedID: 9616
+    m_ExpandedIDs: 000000009025000096360000b2360000ec370000ee3a00001c3f000068480000464d00004456000046560000485600004a5600004c5600004e56000050560000525600005456000056560000585600005a5600005c5600005e56000060560000625600006456000066560000685600006a5600006c5600006e56000070560000725600007456000076560000785600007a5600007c5600007e56000080560000825600008456000086560000885600008a560000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -598,7 +598,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000009225000098360000b4360000ee370000f03a00001e3f00006a4800005e5b0000605b0000625b0000645b0000665b0000685b00006a5b00006c5b00006e5b0000705b0000725b0000745b0000765b0000785b00007a5b00007c5b00007e5b0000805b0000825b0000845b0000865b0000885b00008a5b00008c5b00008e5b0000905b0000925b0000945b0000965b0000985b00009a5b00009c5b00009e5b0000a05b0000a25b0000a45b0000
+    m_ExpandedIDs: 000000009025000096360000b2360000ec370000ee3a00001c3f0000684800004456000046560000485600004a5600004c5600004e56000050560000525600005456000056560000585600005a5600005c5600005e56000060560000625600006456000066560000685600006a5600006c5600006e56000070560000725600007456000076560000785600007a5600007c5600007e56000080560000825600008456000086560000885600008a560000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -623,8 +623,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 8af4ffff
+    m_LastClickedInstanceID: -2934
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000e62f0000
     m_RenameOverlay:
@@ -650,7 +650,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 58}
     m_GridSize: 96
   m_DirectoriesAreaWidth: 348
 --- !u!114 &18
@@ -708,15 +708,15 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 92
+    x: -32000
+    y: -31951
     width: 419
     height: 655
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fee8ffff
-    m_LastClickedID: -5890
-    m_ExpandedIDs: e6fbffff00000000e64e0000504f000050500000
+    m_SelectedIDs: 8af4ffff
+    m_LastClickedID: -2934
+    m_ExpandedIDs: 9af3ffffa0f3ffffa8f3ffffb0f3ffffc4f3ffffc6f3ffffd2f3ffffdcf3ffffe6f3ffff52f4ffff56f4ffff88f4ffffe6fbffff00000000344f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -761,8 +761,8 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 423
-    y: 92
+    x: -31577
+    y: -31951
     width: 1105
     height: 655
   m_SceneLighting: 1
@@ -771,9 +771,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 9.341186, y: -5.585779, z: 16.592175}
+    m_Target: {x: -11.326614, y: -2.081562, z: -8.850601}
     speed: 2
-    m_Value: {x: 9.341186, y: -5.585779, z: 16.592175}
+    m_Value: {x: -11.326614, y: -2.081562, z: -8.850601}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -796,13 +796,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.20927435, y: 0.32536656, z: -0.074080445, w: 0.9191588}
+    m_Target: {x: 0.052162692, y: -0.8988282, z: 0.1114541, w: 0.42067194}
     speed: 2
-    m_Value: {x: -0.20927435, y: -0.32536656, z: 0.074080445, w: -0.9191588}
+    m_Value: {x: 0.052162692, y: -0.8988282, z: 0.1114541, w: 0.42067194}
   m_Size:
-    m_Target: 19.84067
+    m_Target: 19.28178
     speed: 2
-    m_Value: 19.84067
+    m_Value: 19.28178
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -911,7 +911,7 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 768
+    x: -32000
+    y: -31275
     width: 1528
     height: 250
