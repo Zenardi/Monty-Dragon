@@ -4,28 +4,32 @@ using UnityEngine.AI;
 namespace RPG.Characters
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    [RequireComponent(typeof(ThirdPersonCharacter))]
     public class CharacterMovement : MonoBehaviour
     {
         [SerializeField] float stopDistance = 1.0f;
         [SerializeField] float moveSpeedMultiplier = 0.7f;
+        [SerializeField] float animationSpeedMultiplier = 1.7f;
 
-        ThirdPersonCharacter character;   // A reference to the ThirdPersonCharacter on the object
+        [SerializeField] float movingTurnSpeed = 360;
+        [SerializeField] float stationaryTurnSpeed = 180;
+        [SerializeField] float moveThreashold = 1f;
+       
         
         Vector3 clickPoint;
-        GameObject walkTarget;
         NavMeshAgent agent;
         Animator animator;
         Rigidbody myRigidbody;
+        float turnAmount;
+        float m_ForwardAmount;
 
         void Start()
         {
             CameraUI.CameraRaycaster cameraRaycaster = Camera.main.GetComponent<CameraUI.CameraRaycaster>();
-            character = GetComponent<ThirdPersonCharacter>();
             myRigidbody = GetComponent<Rigidbody>();
-            animator = GetComponent<Animator>();
+            myRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
 
-            walkTarget = new GameObject("walkTarget");
+            animator = GetComponent<Animator>();
+            
 
             agent = GetComponent<NavMeshAgent>();
             agent.updatePosition = true ;
@@ -40,11 +44,11 @@ namespace RPG.Characters
         {
             if (agent.remainingDistance > agent.stoppingDistance)
             {
-                character.Move(agent.desiredVelocity);
+                Move(agent.desiredVelocity);
             }
             else
             {
-                character.Move(Vector3.zero);
+                Move(Vector3.zero);
             }
         }
 
@@ -76,6 +80,45 @@ namespace RPG.Characters
                 velocity.y = myRigidbody.velocity.y;
                 myRigidbody.velocity = velocity;
             }
+        }
+
+        public void Move(Vector3 movement)
+        {
+            SetFowardAndTurn(movement);
+            ApplyExtraTurnRotation();
+            UpdateAnimator();
+        }
+
+        private void SetFowardAndTurn(Vector3 movement)
+        {
+            // convert the world relative moveInput vector into a local-relative
+            // turn amount and forward amount required to head in the desired direction.
+            if (movement.magnitude > moveThreashold)
+            {
+                movement.Normalize();
+            }
+            var localMove = transform.InverseTransformDirection(movement);
+            turnAmount = Mathf.Atan2(localMove.x, localMove.z);
+            m_ForwardAmount = localMove.z;
+        }
+
+        void UpdateAnimator()
+        {
+            animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
+            animator.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
+            animator.speed = animationSpeedMultiplier;
+        }
+
+        void ApplyExtraTurnRotation()
+        {
+            // help the character turn faster (this is in addition to root rotation in the animation)
+            float turnSpeed = Mathf.Lerp(stationaryTurnSpeed, movingTurnSpeed, m_ForwardAmount);
+            transform.Rotate(0, turnAmount * turnSpeed * Time.deltaTime, 0);
+        }
+
+        public void Kill()
+        {
+            ///Allow death signaling
         }
     }
 }

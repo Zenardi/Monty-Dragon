@@ -11,12 +11,10 @@ namespace RPG.Characters
     public class Player : MonoBehaviour, IDamageable
     {
         
-        [SerializeField] float maxHealthPoints = 100;
         [SerializeField] float baseDamage = 10;
         [SerializeField] Weapon weaponConfig = null;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
-        [SerializeField] AudioClip[] damageSounds;
-        [SerializeField] AudioClip[] deathSounds;
+
         [Range(.1f, 1.0f)] [SerializeField] float criticalHitChange = 0.1f;
         [SerializeField] float criticalHitMult = 1.25f;
         [SerializeField] ParticleSystem criticalHitParticle = null;
@@ -25,16 +23,11 @@ namespace RPG.Characters
         //For debug
         [SerializeField] AbilityConfig[] abilities;
 
-        const String DEATH_TRIGGER = "Death";
         const String ANIM_ATTACK_TRIGGER = "Attack";
         const String DEFAULT_ATTACK = "Default Attack";
 
-        Animator animator = null;
         CameraRaycaster cameRaraycaster = null;
-        float currentHealthPoints;
-        public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
         float lastHitTime = 0f;
-        AudioSource audioSource = null;
 
         Enemy enemy = null;
 
@@ -42,11 +35,9 @@ namespace RPG.Characters
 
         private void Start()
         {
-            audioSource = GetComponent<AudioSource>();
             RegisterMouseClick();
-            SetCurrentMaxHealth();
             PutWeaponInHand(weaponConfig);
-            SetAttackAnimation();
+            //SetAttackAnimation();
             AttachInitialAbilities();
         }
 
@@ -61,7 +52,8 @@ namespace RPG.Characters
 
         private void Update()
         {
-            if(healthAsPercentage > Mathf.Epsilon)
+            var healthPercentage = GetComponent<HealthSystem>().healthAsPercentage;
+            if(healthPercentage > Mathf.Epsilon)
             {
                 ScanForAbilityKeyDown();
             }
@@ -78,53 +70,6 @@ namespace RPG.Characters
             }
         }
 
-        public void TakeDamage(float changePoints)
-        {
-            //ReduceHeath(changePoints);
-            currentHealthPoints = Mathf.Clamp(currentHealthPoints - changePoints, 0f, maxHealthPoints);
-
-
-            audioSource.clip = damageSounds[UnityEngine.Random.Range(0, damageSounds.Length)];
-            audioSource.Play();
-
-            if (currentHealthPoints - changePoints <= 0)
-            {
-                StartCoroutine(KillPlayer());
-            }
-
-        }
-
-        public void Heal(float points)
-        {
-            currentHealthPoints = Mathf.Clamp(currentHealthPoints + points, 0f, maxHealthPoints);
-
-        }
-
-        IEnumerator KillPlayer()
-        {
-            animator.SetTrigger(DEATH_TRIGGER);
-
-            audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
-            audioSource.Play();
-
-
-            yield return new WaitForSecondsRealtime(audioSource.clip.length); //use audio clip later
-            SceneManager.LoadScene(0);
-        }
-
-        
-
-        private void SetAttackAnimation()
-        {
-            animator = GetComponent<Animator>();
-            animator.runtimeAnimatorController = animatorOverrideController;
-            animatorOverrideController[DEFAULT_ATTACK] = weaponConfig.GetAnimClip();
-        }
-
-        private void SetCurrentMaxHealth()
-        {
-            currentHealthPoints = maxHealthPoints;
-        }
 
 
 
@@ -176,9 +121,8 @@ namespace RPG.Characters
         {
             if (Time.time - lastHitTime > weaponConfig.GetMinTimeBetweenHits())
             {
-                SetAttackAnimation();
-                animator.SetTrigger(ANIM_ATTACK_TRIGGER);
-                enemy.TakeDamage(CalculateDamage());
+                //SetAttackAnimation();
+                //animator.SetTrigger(ANIM_ATTACK_TRIGGER);
                 lastHitTime = Time.time;
             }
         }
@@ -213,6 +157,11 @@ namespace RPG.Characters
             WeaponObject = Instantiate(weaponPrefab, dominantHand.transform);
             WeaponObject.transform.localPosition = this.weaponConfig.gripTransform.localPosition;
             WeaponObject.transform.localRotation = this.weaponConfig.gripTransform.localRotation;
+        }
+
+        public void TakeDamage(float damage)
+        {
+            throw new NotImplementedException();
         }
     }
 

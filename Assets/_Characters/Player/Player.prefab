@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 5426510}
   - component: {fileID: 13615390}
   - component: {fileID: 195668797823585146}
-  - component: {fileID: 11469404}
   - component: {fileID: 114859354349702732}
   - component: {fileID: 114831649642272510}
   - component: {fileID: 114486285834762310}
+  - component: {fileID: 114881734308698774}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -72,19 +72,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11469404
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 149790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingTurnSpeed: 1000
-  stationaryTurnSpeed: 180
 --- !u!136 &13615390
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2173,6 +2160,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopDistance: 1
   moveSpeedMultiplier: 1.5
+  animationSpeedMultiplier: 1.7
+  movingTurnSpeed: 360
+  stationaryTurnSpeed: 180
+  moveThreashold: 1
 --- !u!114 &114859354349702732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2184,22 +2175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1dc1666a91a6344ab00de41db3ed99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 200
   baseDamage: 10
   weaponConfig: {fileID: 11400000, guid: 60ad75c1df7303b40ad7b9f453ab742a, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: 1acdf0bfdd94f9645afcef3b90b9bfbf,
     type: 2}
-  damageSounds:
-  - {fileID: 8300000, guid: 47648172cab00744d82c417b6b0131cc, type: 3}
-  - {fileID: 8300000, guid: 947eea20c4543c0438693718b997810a, type: 3}
-  - {fileID: 8300000, guid: 945b0b88a3d602d409dfc42796bea1fc, type: 3}
-  - {fileID: 8300000, guid: bbf216a9885ab3043802f22d15eb0414, type: 3}
-  - {fileID: 8300000, guid: a7ab834f92c627a4d995f8d181d70b32, type: 3}
-  - {fileID: 8300000, guid: efe4dd559599a2d439b2a8098e5474f7, type: 3}
-  deathSounds:
-  - {fileID: 8300000, guid: 69c377e4bf692df46a11401597650b01, type: 3}
-  - {fileID: 8300000, guid: c233d5d89191a934184f9530514d3109, type: 3}
-  - {fileID: 8300000, guid: ebfa5be82658b6f44830db3beb83719e, type: 3}
   criticalHitChange: 0.1
   criticalHitMult: 1.25
   criticalHitParticle: {fileID: 198197590680419372}
@@ -2207,6 +2186,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 782fcecfe1676aa45b0774a3167ef4c4, type: 2}
   - {fileID: 11400000, guid: 53b20740a85ea424992f5ec5b6f29321, type: 2}
   - {fileID: 11400000, guid: 940d7108b2bd4ae418abeb2e28ff4459, type: 2}
+--- !u!114 &114881734308698774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12bb8016887e04344acd86859ff098dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoints: 100
+  healthBar: {fileID: 0}
+  damageSounds: []
+  deathSounds: []
+  deathVanishSeconds: 2
+  currentHealthPoints: 0
 --- !u!137 &137262777851725202
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

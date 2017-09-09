@@ -1,11 +1,11 @@
-﻿using RPG.Core;
+﻿using System;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Characters
 {
-    public class Enemy : MonoBehaviour, IDamageable
+    public class Enemy : MonoBehaviour, IDamageable //TODO remove
     {
-        [SerializeField] float maxHealthPoints = 100f;
         [SerializeField] float attackRadius = 4f;
         [SerializeField] float chaseRadius = 6f;
         [SerializeField] float damagePerShot = 9f;
@@ -19,34 +19,18 @@ namespace RPG.Characters
 
 
         bool isAttacking = false;
-        float currentHealthPoints;
 
         Player player = null;
 
-        public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
-
-        public void TakeDamage(float damage)
-        {
-            currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
-            if (currentHealthPoints <= 0) { Destroy(gameObject); }
-        }
 
         void Start()
         {
             player = GameObject.FindObjectOfType<Player>();
-            
-            currentHealthPoints = maxHealthPoints;
+
         }
 
         void Update()
         {
-            //if(player.healthAsPercentage <= Mathf.Epsilon)
-            //{
-            //    StopAllCoroutines();
-            //    Destroy(this);
-            //}
-            ////if (aiCharacterControl == null)
-            ////    print("aiCharacterControl is null -- " + this.gameObject.name.ToString());
             //float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
             //if (distanceToPlayer <= attackRadius && aiCharacterControl != null && !isAttacking)
             //{
@@ -90,6 +74,11 @@ namespace RPG.Characters
 
             Gizmos.color = new Color(0f, 0f, 255, .5f);
             Gizmos.DrawWireSphere(transform.position, chaseRadius);
+        }
+
+        public void TakeDamage(float damage)
+        {
+            throw new NotImplementedException();
         }
     }
 
