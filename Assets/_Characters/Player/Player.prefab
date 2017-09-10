@@ -2133,9 +2133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751b83b1980f61144a8e3d50d1d77702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyOrb: {fileID: 0}
+  energyBar: {fileID: 0}
   maxEnergyPoints: 100
   regenPointsPerSecond: 3
+  abilities:
+  - {fileID: 11400000, guid: 53b20740a85ea424992f5ec5b6f29321, type: 2}
+  - {fileID: 11400000, guid: 940d7108b2bd4ae418abeb2e28ff4459, type: 2}
 --- !u!114 &114563039942099574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2182,10 +2185,6 @@ MonoBehaviour:
   criticalHitChange: 0.1
   criticalHitMult: 1.25
   criticalHitParticle: {fileID: 198197590680419372}
-  abilities:
-  - {fileID: 11400000, guid: 782fcecfe1676aa45b0774a3167ef4c4, type: 2}
-  - {fileID: 11400000, guid: 53b20740a85ea424992f5ec5b6f29321, type: 2}
-  - {fileID: 11400000, guid: 940d7108b2bd4ae418abeb2e28ff4459, type: 2}
 --- !u!114 &114881734308698774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2202,7 +2201,6 @@ MonoBehaviour:
   damageSounds: []
   deathSounds: []
   deathVanishSeconds: 2
-  currentHealthPoints: 0
 --- !u!137 &137262777851725202
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

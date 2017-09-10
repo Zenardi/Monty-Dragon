@@ -17,38 +17,25 @@ namespace RPG.Characters
 
         [Range(.1f, 1.0f)] [SerializeField] float criticalHitChange = 0.1f;
         [SerializeField] float criticalHitMult = 1.25f;
-        [SerializeField] ParticleSystem criticalHitParticle = null;
-
-
-        //For debug
-        [SerializeField] AbilityConfig[] abilities;
-
+        [SerializeField] ParticleSystem criticalHitParticle;
+        
         const String ANIM_ATTACK_TRIGGER = "Attack";
         const String DEFAULT_ATTACK = "Default Attack";
 
         CameraRaycaster cameRaraycaster = null;
         float lastHitTime = 0f;
-
         Enemy enemy = null;
-
         GameObject WeaponObject;
+        SpecialAbilities abilities;
 
         private void Start()
         {
+            abilities = GetComponent<SpecialAbilities>();
             RegisterMouseClick();
             PutWeaponInHand(weaponConfig);
-            //SetAttackAnimation();
-            AttachInitialAbilities();
         }
 
-        private void AttachInitialAbilities()
-        {
-            for (int abilityIndex = 0; abilityIndex < abilities.Length; abilityIndex++)
-            {
-                abilities[abilityIndex].AttachAbilityTo(gameObject);
-            }
 
-        }
 
         private void Update()
         {
@@ -61,11 +48,11 @@ namespace RPG.Characters
 
         private void ScanForAbilityKeyDown()
         {
-            for (int keyIndex = 0; keyIndex < abilities.Length; keyIndex++)
+            for (int keyIndex = 0; keyIndex < abilities.GetNumberOfSpecialAbilities(); keyIndex++)
             {
                 if(Input.GetKeyDown(keyIndex.ToString()))
                 {
-                    AttemptSpecialAbility(keyIndex);
+                    abilities.AttemptSpecialAbility(keyIndex);
                 }
             }
         }
@@ -99,21 +86,7 @@ namespace RPG.Characters
             }
             else if(Input.GetMouseButtonDown(1))
             {
-                AttemptSpecialAbility(0);
-            }
-        }
-
-        private void AttemptSpecialAbility(int index)
-        {
-            var energyComponent = GetComponent<Energy>();
-            var energyCost = abilities[index].GetEnergyCost();
-
-            if(energyComponent.IsEnergyAvailable(energyCost)) //TODO read form SO (scriptable obj)
-            {
-                energyComponent.ConsumeEnergy(10f);
-                var abilityParams = new AbilityUseParams(enemy, baseDamage);
-                abilities[index].Use(abilityParams);
-                //Use the ability
+                abilities.AttemptSpecialAbility(0);
             }
         }
 
