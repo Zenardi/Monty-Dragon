@@ -1,14 +1,11 @@
 ﻿using RPG.CameraUI;
-using RPG.Core;
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.SceneManagement;
 
 namespace RPG.Characters
 {
-    public class Player : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour
     {
         
         [SerializeField] float baseDamage = 10;
@@ -27,23 +24,35 @@ namespace RPG.Characters
         Enemy enemy = null;
         GameObject WeaponObject;
         SpecialAbilities abilities;
+        Character character;
 
         private void Start()
         {
+            character = GetComponent<Character>(); 
             abilities = GetComponent<SpecialAbilities>();
-            RegisterMouseClick();
+            RegisterForMouseEvents();
             PutWeaponInHand(weaponConfig);
         }
 
+        private void RegisterForMouseEvents()
+        {
+            cameRaraycaster = FindObjectOfType<CameraRaycaster>();
+            cameRaraycaster.onMouseOverEnemy += OnMouseOverEnemy;
+            cameRaraycaster.onMouseOverPotentiallyWalkable += OnMousePottentiallyWalkable;
 
+        }
+
+        private void OnMousePottentiallyWalkable(Vector3 destination)
+        {
+            if(Input.GetMouseButton(0))
+            {
+                character.SetDestination(destination);
+            }
+        }
 
         private void Update()
         {
-            var healthPercentage = GetComponent<HealthSystem>().healthAsPercentage;
-            if(healthPercentage > Mathf.Epsilon)
-            {
-                ScanForAbilityKeyDown();
-            }
+            ScanForAbilityKeyDown();
         }
 
         private void ScanForAbilityKeyDown()
@@ -57,9 +66,6 @@ namespace RPG.Characters
             }
         }
 
-
-
-
         private GameObject RequestDominantHand()
         {
             var dominantHand = GetComponentsInChildren<DominantHand>();
@@ -71,11 +77,7 @@ namespace RPG.Characters
             return dominantHand[0].gameObject;
         }
 
-        private void RegisterMouseClick()
-        {
-            cameRaraycaster = FindObjectOfType<CameraRaycaster>();
-            cameRaraycaster.onMouseOverEnemy += OnMouseOverEnemy;
-        }
+
 
         private void OnMouseOverEnemy(Enemy enemyToSet)
         {

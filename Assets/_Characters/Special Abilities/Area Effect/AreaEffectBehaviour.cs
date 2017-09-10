@@ -29,7 +29,7 @@ public class AreaEffectBehaviour : AbilityBehaviour
         foreach (var item in hits)
         {
             var damageble = item.collider.gameObject.GetComponent<HealthSystem>();
-            bool hitPlayer = item.collider.gameObject.GetComponent<Player>();
+            bool hitPlayer = item.collider.gameObject.GetComponent<PlayerMovement>();
             if (damageble != null && !hitPlayer)
             {
                 float damageToDeal =  (config as AreaEffectConfig).GetDamageToEachTarget();

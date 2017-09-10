@@ -20,12 +20,12 @@ namespace RPG.Characters
 
         bool isAttacking = false;
 
-        Player player = null;
+        PlayerMovement player = null;
 
 
         void Start()
         {
-            player = GameObject.FindObjectOfType<Player>();
+            player = GameObject.FindObjectOfType<PlayerMovement>();
 
         }
 
