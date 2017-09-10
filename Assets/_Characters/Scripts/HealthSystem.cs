@@ -20,7 +20,7 @@ public class HealthSystem : MonoBehaviour
     float currentHealthPoints;
     Animator animator;
     AudioSource audioSource;
-    CharacterMovement characterMovement;
+    Character characterMovement;
 
     public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
@@ -30,7 +30,7 @@ public class HealthSystem : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
-        characterMovement = GetComponent<CharacterMovement>();
+        characterMovement = GetComponent<Character>();
         currentHealthPoints = maxHealthPoints;
     }
 	

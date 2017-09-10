@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -83,7 +85,7 @@
     <Compile Include="Assets\_Characters\Enemies\Enemy.cs" />
     <Compile Include="Assets\_Characters\Enemies\EnemyUI.cs" />
     <Compile Include="Assets\_Characters\Player\Player.cs" />
-    <Compile Include="Assets\_Characters\Scripts\CharacterMovement.cs" />
+    <Compile Include="Assets\_Characters\Scripts\Character.cs" />
     <Compile Include="Assets\_Characters\Scripts\DominantHand.cs" />
     <Compile Include="Assets\_Characters\Scripts\HealthSystem.cs" />
     <Compile Include="Assets\_Characters\Scripts\SpecialAbilities.cs" />
