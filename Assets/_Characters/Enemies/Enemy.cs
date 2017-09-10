@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.Characters
 {
-    public class Enemy : MonoBehaviour, IDamageable //TODO remove
+    public class Enemy : MonoBehaviour
     {
         [SerializeField] float attackRadius = 4f;
         [SerializeField] float chaseRadius = 6f;

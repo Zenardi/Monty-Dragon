@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.2f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -87,8 +85,8 @@
     <Compile Include="Assets\_Characters\Player\Player.cs" />
     <Compile Include="Assets\_Characters\Scripts\CharacterMovement.cs" />
     <Compile Include="Assets\_Characters\Scripts\DominantHand.cs" />
-    <Compile Include="Assets\_Characters\Scripts\SpecialAbilities.cs" />
     <Compile Include="Assets\_Characters\Scripts\HealthSystem.cs" />
+    <Compile Include="Assets\_Characters\Scripts\SpecialAbilities.cs" />
     <Compile Include="Assets\_Characters\Special Abilities\AbilityBehaviour.cs" />
     <Compile Include="Assets\_Characters\Special Abilities\AbilityConfig.cs" />
     <Compile Include="Assets\_Characters\Special Abilities\Area Effect\AreaEffectBehaviour.cs" />
@@ -101,7 +99,6 @@
     <Compile Include="Assets\_Characters\Weapons\Weapon.cs" />
     <Compile Include="Assets\_Characters\Weapons\WeaponPickupPoint.cs" />
     <Compile Include="Assets\_Core\AudioTrigger.cs" />
-    <Compile Include="Assets\_Core\IDamageable.cs" />
     <Compile Include="Assets\_Core\SpinMe.cs" />
     <Compile Include="Assets\_Enviriorments\Water\Scripts\Displace.cs" />
     <Compile Include="Assets\_Enviriorments\Water\Scripts\GerstnerDisplace.cs" />

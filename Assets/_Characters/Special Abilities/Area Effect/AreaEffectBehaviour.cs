@@ -8,16 +8,16 @@ using RPG.Core;
 public class AreaEffectBehaviour : AbilityBehaviour
 {
 
-    public override void Use(AbilityUseParams useParams)
+    public override void Use(GameObject target)
     {
         PlayAblitySound();
-        DealRadialDamage(useParams);
+        DealRadialDamage();
         PlayParticleEffect();
     }
 
 
 
-    private void DealRadialDamage(AbilityUseParams useParams)
+    private void DealRadialDamage()
     {
         //static spehere for targets
         RaycastHit[] hits = Physics.SphereCastAll(
@@ -28,11 +28,11 @@ public class AreaEffectBehaviour : AbilityBehaviour
 
         foreach (var item in hits)
         {
-            var damageble = item.collider.gameObject.GetComponent<IDamageable>();
+            var damageble = item.collider.gameObject.GetComponent<HealthSystem>();
             bool hitPlayer = item.collider.gameObject.GetComponent<Player>();
             if (damageble != null && !hitPlayer)
             {
-                float damageToDeal = useParams.baseDamage + (config as AreaEffectConfig).GetDamageToEachTarget();
+                float damageToDeal =  (config as AreaEffectConfig).GetDamageToEachTarget();
                 damageble.TakeDamage(damageToDeal);
             }
         }

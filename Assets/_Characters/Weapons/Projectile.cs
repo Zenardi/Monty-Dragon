@@ -22,21 +22,19 @@ namespace RPG.Characters
             var layerCollidedWith = collision.gameObject.layer;
             if (shooter && layerCollidedWith != shooter.layer)
             {
-                DamageIfDamageables(collision);
+                //DamageIfDamageables(collision);
             }
-
-
         }
 
-        private void DamageIfDamageables(Collision collision)
-        {
-            Component damageableComponent = collision.gameObject.GetComponent(typeof(IDamageable));
-            if (damageableComponent)
-            {
-                (damageableComponent as IDamageable).TakeDamage(damageCaused);
-            }
-            Destroy(this.gameObject, destroyDelay);
-        }
+        //private void DamageIfDamageables(Collision collision)
+        //{
+        //    Component damageableComponent = collision.gameObject.GetComponent(typeof(IDamageable));
+        //    if (damageableComponent)
+        //    {
+        //        (damageableComponent as IDamageable).TakeDamage(damageCaused);
+        //    }
+        //    Destroy(this.gameObject, destroyDelay);
+        //}
 
         internal float GetDefaultLauchSpeed()
         {

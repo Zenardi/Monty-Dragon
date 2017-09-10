@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 namespace RPG.Characters
 {
-    public class Player : MonoBehaviour, IDamageable
+    public class Player : MonoBehaviour
     {
         
         [SerializeField] float baseDamage = 10;
