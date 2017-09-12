@@ -16,7 +16,7 @@ namespace RPG.Characters
 
 
         CameraRaycaster cameRaraycaster = null;
-        Enemy enemy = null;
+        EnemyAI enemy = null;
         SpecialAbilities abilities;
         Character character;
         WeaponSystem weaponSystem;
@@ -62,7 +62,7 @@ namespace RPG.Characters
             }
         }
 
-        private void OnMouseOverEnemy(Enemy enemyToSet)
+        private void OnMouseOverEnemy(EnemyAI enemyToSet)
         {
             this.enemy = enemyToSet;
             if(Input.GetMouseButton(0) && IsTargetInRange(enemyToSet.gameObject))

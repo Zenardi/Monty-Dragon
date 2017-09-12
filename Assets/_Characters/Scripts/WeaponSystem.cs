@@ -39,7 +39,7 @@ namespace RPG.Characters
         public void PutWeaponInHand(WeaponConfig weaponToUse)
         {
             weaponConfig = weaponToUse;
-            var weaponPrefab = weaponToUse.GetWeaponPrefab();
+            var weaponPrefab = weaponConfig.GetWeaponPrefab();
             GameObject dominantHand = RequestDominantHand();
             Destroy(WeaponObject);
             WeaponObject = Instantiate(weaponPrefab, dominantHand.transform);
