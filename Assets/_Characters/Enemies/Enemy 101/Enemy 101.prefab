@@ -293,6 +293,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4076335437119544}
   - component: {fileID: 114092257921783626}
+  - component: {fileID: 114914465818536584}
+  - component: {fileID: 114083684885630946}
+  - component: {fileID: 114080707124281250}
   m_Layer: 0
   m_Name: Enemy 101
   m_TagString: Untagged
@@ -1871,6 +1874,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1771358540253576}
   m_Mesh: {fileID: 4300006, guid: d288a0e4a2d923b46898986e979da643, type: 3}
+--- !u!114 &114080707124281250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347621917414366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12bb8016887e04344acd86859ff098dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthPoints: 100
+  healthBar: {fileID: 0}
+  damageSounds:
+  - {fileID: 8300000, guid: 47648172cab00744d82c417b6b0131cc, type: 3}
+  - {fileID: 8300000, guid: 947eea20c4543c0438693718b997810a, type: 3}
+  - {fileID: 8300000, guid: 945b0b88a3d602d409dfc42796bea1fc, type: 3}
+  - {fileID: 8300000, guid: bbf216a9885ab3043802f22d15eb0414, type: 3}
+  - {fileID: 8300000, guid: a7ab834f92c627a4d995f8d181d70b32, type: 3}
+  - {fileID: 8300000, guid: efe4dd559599a2d439b2a8098e5474f7, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: 69c377e4bf692df46a11401597650b01, type: 3}
+  - {fileID: 8300000, guid: c233d5d89191a934184f9530514d3109, type: 3}
+  - {fileID: 8300000, guid: ebfa5be82658b6f44830db3beb83719e, type: 3}
+  deathVanishSeconds: 2
+--- !u!114 &114083684885630946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347621917414366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e5d4d0625cce24197218ceafd55e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseRadius: 6
+  patrolPath: {fileID: 0}
+  waypointTolerance: 2
 --- !u!114 &114092257921783626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1909,6 +1951,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f199bc949b26e9d47b6635858635d813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114914465818536584
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347621917414366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e96615071862b4ba81a605f157fabd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 10
+  weaponConfig: {fileID: 11400000, guid: 683f300797d15c749b28890f7f39ae87, type: 2}
 --- !u!137 &137362300664562498
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

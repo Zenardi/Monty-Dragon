@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -49,10 +50,18 @@ namespace RPG.Characters
 
         private void SetAttackAnimation()
         {
-            var animatorOverrideController = character.GetOverrideController();
-            animator = GetComponent<Animator>();
-            animator.runtimeAnimatorController = character.GetOverrideController();
-            animatorOverrideController[DEFAULT_ATTACK] = weaponConfig.GetAnimClip();
+            if(!character.GetOverrideController())
+            {
+                Debug.Break();
+                Debug.LogAssertion("Provide " + gameObject + "with an animator override controoler.");
+            }
+            else
+            {
+                var animatorOverrideController = character.GetOverrideController();
+                animator.runtimeAnimatorController = character.GetOverrideController();
+                animatorOverrideController[DEFAULT_ATTACK] = weaponConfig.GetAnimClip();
+            }
+
         }
 
         private GameObject RequestDominantHand()
@@ -79,7 +88,44 @@ namespace RPG.Characters
         public void AttackTarget(GameObject targetToAttack)
         {
             target = targetToAttack;
-            //todo use a repeat attack co-routine
+            StartCoroutine(AttackTargetRepeatdly());
+        }
+
+        IEnumerator AttackTargetRepeatdly()
+        {
+            bool attackerStillAlive = GetComponent<HealthSystem>().healthAsPercentage >= Mathf.Epsilon;
+            bool targetStillAlive = target.GetComponent<HealthSystem>().healthAsPercentage >= Mathf.Epsilon;
+
+            while(attackerStillAlive && targetStillAlive)
+            {
+                float weaponHitPeriod = weaponConfig.GetMinTimeBetweenHits();
+                float timeToWait = weaponHitPeriod * character.GetAnimSpeedMultiplier();
+                bool isTimeToHitAgain = Time.time - lastHitTime > timeToWait;
+
+                if(isTimeToHitAgain)
+                {
+                    AttackTargetOnce();
+                    lastHitTime = Time.time;
+                }
+
+                yield return new WaitForSeconds(timeToWait);
+            }
+
+        }
+
+        private void AttackTargetOnce()
+        {
+            transform.LookAt(target.transform);
+            animator.SetTrigger(ANIM_ATTACK_TRIGGER);
+            float dmgDelay = 1.0f; //todo get from the weapon
+            SetAttackAnimation();
+            StartCoroutine(DamageAfterDelay(dmgDelay));
+        }
+
+        private IEnumerator DamageAfterDelay(float dmgDelay)
+        {
+            yield return new WaitForSeconds(dmgDelay);
+            target.GetComponent<HealthSystem>().TakeDamage(CalculateDamage());
         }
 
         public WeaponConfig GetCurrentWeapon()

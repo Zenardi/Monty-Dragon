@@ -97,6 +97,11 @@ namespace RPG.Characters
             }
         }
 
+        internal float GetAnimSpeedMultiplier()
+        {
+            return animator.speed;
+        }
+
         public void SetDestination(Vector3 worldPos)
         {
             navMeshAgent.destination = worldPos;
