@@ -13,6 +13,7 @@ public class AreaEffectBehaviour : AbilityBehaviour
         PlayAblitySound();
         DealRadialDamage();
         PlayParticleEffect();
+        PlayAbilityAnimation();
     }
 
 

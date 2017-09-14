@@ -12,6 +12,8 @@ namespace RPG.Characters
         [SerializeField] float energyCost = 10f;
         [SerializeField] GameObject particleObject = null;
         [SerializeField] AudioClip[]  audioClips = null;
+        [SerializeField] AnimationClip abilityAnimation;
+
 
         protected AbilityBehaviour behaviour;
 
@@ -42,6 +44,11 @@ namespace RPG.Characters
         public AudioClip GetRandimAbilitySound()
         {
             return audioClips[Random.Range(0, audioClips.Length)];
+        }
+
+        public AnimationClip GetAbilityAnimation()
+        {
+            return abilityAnimation;
         }
     }
 }
