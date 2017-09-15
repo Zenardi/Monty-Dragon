@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 114831649642272510}
   - component: {fileID: 114486285834762310}
   - component: {fileID: 114881734308698774}
+  - component: {fileID: 114246966613435750}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.02, y: 0, z: -3.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4395281008102866}
@@ -1944,6 +1945,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1971919631358194}
   m_Mesh: {fileID: 4300004, guid: d288a0e4a2d923b46898986e979da643, type: 3}
+--- !u!114 &114246966613435750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0e96615071862b4ba81a605f157fabd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 10
+  currentWeaponConfig: {fileID: 11400000, guid: 683f300797d15c749b28890f7f39ae87,
+    type: 2}
 --- !u!114 &114486285834762310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2012,13 +2027,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1dc1666a91a6344ab00de41db3ed99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 10
-  weaponConfig: {fileID: 11400000, guid: 60ad75c1df7303b40ad7b9f453ab742a, type: 2}
-  animatorOverrideController: {fileID: 22100000, guid: 1acdf0bfdd94f9645afcef3b90b9bfbf,
-    type: 2}
-  criticalHitChange: 0.1
-  criticalHitMult: 1.25
-  criticalHitParticle: {fileID: 198197590680419372}
 --- !u!114 &114881734308698774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2032,8 +2040,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 100
   healthBar: {fileID: 0}
-  damageSounds: []
-  deathSounds: []
+  damageSounds:
+  - {fileID: 8300000, guid: 47648172cab00744d82c417b6b0131cc, type: 3}
+  - {fileID: 8300000, guid: 947eea20c4543c0438693718b997810a, type: 3}
+  - {fileID: 8300000, guid: 945b0b88a3d602d409dfc42796bea1fc, type: 3}
+  - {fileID: 8300000, guid: bbf216a9885ab3043802f22d15eb0414, type: 3}
+  - {fileID: 8300000, guid: a7ab834f92c627a4d995f8d181d70b32, type: 3}
+  - {fileID: 8300000, guid: efe4dd559599a2d439b2a8098e5474f7, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: 69c377e4bf692df46a11401597650b01, type: 3}
+  - {fileID: 8300000, guid: c233d5d89191a934184f9530514d3109, type: 3}
+  - {fileID: 8300000, guid: ebfa5be82658b6f44830db3beb83719e, type: 3}
   deathVanishSeconds: 2
 --- !u!137 &137638797029583006
 SkinnedMeshRenderer:

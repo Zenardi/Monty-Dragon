@@ -12,11 +12,13 @@ namespace RPG.Characters
         [SerializeField] float chaseRadius = 9f;
         [SerializeField] WaypointContainer patrolPath;
         [SerializeField] float waypointTolerance = 2.0f;
+        [SerializeField] float waypoinDwellTime = 2.0f;
+        
 
         enum State { Idle, Attacking, Patrolling, Chasing}
         State state = State.Idle;
 
-        PlayerMovement player;
+        PlayerControl player;
         Character character;
         float currentWeaponRange = 4f;
         float distanceToPlayer;
@@ -24,7 +26,7 @@ namespace RPG.Characters
 
         void Start()
         {
-            player = GameObject.FindObjectOfType<PlayerMovement>();
+            player = GameObject.FindObjectOfType<PlayerControl>();
             character = GetComponent<Character>();
         }
 
@@ -41,6 +43,8 @@ namespace RPG.Characters
                 //stop what we are doing
                 StopAllCoroutines();
 
+                weaponSystem.StopAttacking();
+
                 //start patrolling
                 StartCoroutine(Patrol());
 
@@ -50,6 +54,8 @@ namespace RPG.Characters
             {
                 //stop what we are doing
                 StopAllCoroutines();
+
+                weaponSystem.StopAttacking();
 
                 //chase player
                 StartCoroutine(ChasePlayer());
@@ -62,6 +68,8 @@ namespace RPG.Characters
                 StopAllCoroutines();
 
                 //attack player
+                weaponSystem.AttackTarget(player.gameObject);
+
             }
         }
 
@@ -69,12 +77,12 @@ namespace RPG.Characters
         {
             state = State.Patrolling;
             
-            while(true)
+            while(patrolPath != null)
             {
                 Vector3 nextWaypointPos = patrolPath.transform.GetChild(nextwayPointIndex).position;
                 character.SetDestination(nextWaypointPos);
                 CycleWaypointWhenClose(nextWaypointPos);
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(waypoinDwellTime);
             }
 
         }

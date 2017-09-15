@@ -1963,7 +1963,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 10
-  weaponConfig: {fileID: 11400000, guid: 683f300797d15c749b28890f7f39ae87, type: 2}
+  currentWeaponConfig: {fileID: 11400000, guid: 683f300797d15c749b28890f7f39ae87,
+    type: 2}
 --- !u!137 &137362300664562498
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
