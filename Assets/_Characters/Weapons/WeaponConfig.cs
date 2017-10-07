@@ -10,13 +10,20 @@ namespace RPG.Characters
         public Transform gripTransform;
         [SerializeField] GameObject weaponPrefab;
         [SerializeField] AnimationClip attackAnimation;
-        [SerializeField] float minTimeBetweenHits = .5f;
+        [SerializeField] float timeBetweenCycles = .5f;
         [SerializeField] float maxAttackRange = 2f;
         [SerializeField] float additionalDamage = 10f;
+        [SerializeField] float damageDelay = .5f;
+
 
         public GameObject GetWeaponPrefab()
         {
             return weaponPrefab;
+        }
+
+        public float GetDamageDelay()
+        {
+            return damageDelay;
         }
 
         public AnimationClip GetAnimClip()
@@ -30,13 +37,15 @@ namespace RPG.Characters
         /// </summary>
         private void RemoveAnimationEvent()
         {
-            attackAnimation.events = new AnimationEvent[0];
+            if (attackAnimation != null)
+                attackAnimation.events = new AnimationEvent[0];
+            else
+                Debug.Log("AttackAnimation NULL (WebConfig Script)");
         }
 
-        public float GetMinTimeBetweenHits()
+        public float GetTimeBetweenCycles()
         {
-            // TODO consdier whether we take animation time into account
-            return minTimeBetweenHits;
+            return timeBetweenCycles;
         }
 
         public float GetMaxAttackRange()

@@ -14,6 +14,8 @@ namespace RPG.Characters
         [SerializeField] RuntimeAnimatorController animatorController;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
         [SerializeField] Avatar characterAvatar;
+        [SerializeField] [Range(.1f, 1f)] float animatorFowardCap = 1f;
+
 
         [Header("Capsule Collider")]
         [SerializeField] Vector3 colliderCenter = new Vector3(0, 1.03f, 0);
@@ -72,6 +74,11 @@ namespace RPG.Characters
 
         private void Update()
         {
+            if(!navMeshAgent.isOnNavMesh)
+            {
+                Debug.LogError(gameObject.name + " not a nav mesh");
+            }
+
             if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)
             {
                 Move(navMeshAgent.desiredVelocity);
@@ -134,7 +141,7 @@ namespace RPG.Characters
 
         void UpdateAnimator()
         {
-            animator.SetFloat("Forward", m_ForwardAmount, 0.1f, Time.deltaTime);
+            animator.SetFloat("Forward", m_ForwardAmount * animatorFowardCap, 0.1f, Time.deltaTime);
             animator.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
             animator.speed = animationSpeedMultiplier;
         }

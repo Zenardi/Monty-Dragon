@@ -125,7 +125,6 @@
     <Compile Include="Assets\_CameraUI\Editor\CameraRaycaster.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\_Characters\Weapons\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\_Enviriorments\Asset Packs - For Students\SimpleFX - Synty\Materials\UnlitVertexColour_Alpha.shader" />
     <None Include="Assets\_Enviriorments\Water\Shaders\FXWaterPro.shader" />
   </ItemGroup>
